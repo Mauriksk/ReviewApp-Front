@@ -3,7 +3,7 @@ import React from 'react'
 type SearchProps = {
     value: string;
     onChange: (value: string) => void,
-    onSumbit: any
+    onSumbit:  () => void
 }
 
 export const SearchInput = ({ value, onChange, onSumbit }: SearchProps) => {

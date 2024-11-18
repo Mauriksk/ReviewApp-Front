@@ -41,7 +41,7 @@ export const AtractionsList = () => {
                     ProductsList.map(atractions => (
 
                         atractions.imageUrl ? ( // Verifica si imageUrl no está vacío
-                            <div key={atractions.place_id} className="mb-10 ml-3 mr-3 pb-1 max-w-sm rounded-3xl overflow-hidden shadow-lg bg-white shadow transition-transform duration-300 ease-in-out transform hover:shadow-2xl hover:scale-105">
+                            <div key={atractions.place_id} className="mb-10 ml-3 mr-3 pb-1 max-w-sm rounded-3xl overflow-hidden shadow-lg bg-white transition-transform duration-300 ease-in-out transform hover:shadow-2xl hover:scale-105">
                                 <Image className="w-full object-cover" width={2000} height={2000} src={atractions.imageUrl} alt="Restaurant image" />
                                 <div className="px-6 pt-4">
                                     <div className="font-bold text-xl mb-2">{atractions.name}</div>

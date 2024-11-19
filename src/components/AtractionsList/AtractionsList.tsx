@@ -6,10 +6,11 @@ import { Atracctions } from "./AtractionsType";
 import { StarsRating } from "../StarsRating/StarsRating";
 import { SearchInput } from "../SearchInput/SearchInput";
 import { SearchCategories } from "../SearchCategories/SearchCategories";
+import { useRouter } from "next/navigation";
 
 export const AtractionsList = () => {
 
-
+    const router = useRouter()
     const [ProductsList, setProductsList] = useState<Atracctions[]>([])
     const [searchValues, setSearchValues] = useState<string>("")
     const [typeValues, setTypeValue] = useState<string>("")
@@ -32,6 +33,10 @@ export const AtractionsList = () => {
             .catch(err => console.log(err))
     }
 
+    const handlerClick = (id: string) => {
+        router.push(`/details?id=${id}`)
+    }
+
     return (
         <>
             <SearchInput value={searchValues} onChange={setSearchValues} onSumbit={handlerOnSubmit} />
@@ -40,8 +45,8 @@ export const AtractionsList = () => {
                 {
                     ProductsList.map(atractions => (
 
-                        atractions.imageUrl ? ( // Verifica si imageUrl no está vacío
-                            <div key={atractions.place_id} className="mb-10 ml-3 mr-3 pb-1 max-w-sm rounded-3xl overflow-hidden shadow-lg bg-white transition-transform duration-300 ease-in-out transform hover:shadow-2xl hover:scale-105">
+                        atractions.imageUrl ? (
+                            <div onClick={()=> handlerClick(atractions.place_id)} key={atractions.place_id} className="mb-10 ml-3 mr-3 pb-1 max-w-sm rounded-3xl overflow-hidden shadow-lg bg-white transition-transform duration-300 ease-in-out transform hover:shadow-2xl hover:scale-105">
                                 <Image className="w-full object-cover" width={2000} height={2000} src={atractions.imageUrl} alt="Restaurant image" />
                                 <div className="px-6 pt-4">
                                     <div className="font-bold text-xl mb-2">{atractions.name}</div>
